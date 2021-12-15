@@ -26,7 +26,26 @@ app.post("/auth/register", (req, res) => {
 });
 
 app.post("/post/blog", (req, res) => {
-  res.sendStatus(200);
+  res.send(JSON.stringify({ id: 1 }));
+});
+
+app.get("/get/myBlogs", (req, res) => {
+  res.send(
+    JSON.stringify([
+      {
+        id: 1,
+        content: "<p>hello world</p>\n<p>&nbsp;</p>",
+        title: "First Post",
+        username: req.query.username,
+      },
+      {
+        id: 2,
+        content: "<p>Welcome to the metaverse</p>\n<p>&nbsp;</p>",
+        title: "VR is COOL",
+        username: req.query.username,
+      },
+    ])
+  );
 });
 
 app.listen(port, () => {
